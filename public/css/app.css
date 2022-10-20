@@ -1,0 +1,64 @@
+.main h2 {
+    color: #fff;
+    font-size: 1.4em;
+    font-weight: 500;
+}
+
+
+
+.main p {
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+
+    @media (max-width:1023px) {
+        section {
+            padding: 80px 20px;
+        }
+        .main h2 {
+            color: black;
+            font-size: 5em;
+        }
+        .main p {
+            color: #000;
+            font-size: 54px;
+        }
+    }
+
+
+        .divider:after,
+        .divider:before {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #eee;
+        }
+
+    .litter {
+        width: 40px;
+        height:40px;
+        border-radius: 50%;
+        background: #512DA8;
+        font-size: 35px;
+        color: #fff;
+        text-align: center;
+        line-height: 150px;
+        margin: 20px 0;
+    }
+
+
+
+    @media (max-width:991px) {
+        .nav-pro-mopile {
+            font-size: 30px;
+        }
+            }
+    .form-new{
+        margin-top: 14px !important;
+    }
+
+
