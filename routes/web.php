@@ -2,14 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\PostController;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+
 
 
 
 Route::get('/', function () {
     return view('index');
 })->name('index');
+
+
 
 
 // Route::prefix('admin')->middleware('auth')->group(function() {
@@ -35,8 +40,12 @@ Route::get('/logout', function (Request $request) {
 
 
 Route::get('/post', function () {
-    return view('pages.post');
-
+    return view('pages.post.post');
 })->name('page.posts')->middleware('admin');
+
+Route::prefix('/')->group(function () {
+    Route::get('/load', [PostController::class, 'getPosts'])->name('posts.get');
+    Route::post('/create', [PostController::class, 'createPost'])->name('posts.create');
+});
 
 

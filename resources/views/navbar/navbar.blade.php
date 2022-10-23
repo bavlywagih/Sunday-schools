@@ -13,34 +13,51 @@
         <li class="nav-item">
           <a class="nav-link nav-pro-mopile {{ \Request::route()->getName() === 'index' ? 'active' : '' }}" href="/">الصفحه الرئيسيه</a>
         </li>
+        @auth
   <li class="nav-item">
     <button class="nav-link border border-0 bg-transparent nav-pro-mopile" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
         المكتبه
     </button>
   </li>
-<li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+
+            @if(Auth::user()->role == '0')
+                <li class="nav-item">
+                  <a class="nav-link nav-pro-mopile " href="/">مشاهدة المنشورات </a>
+                </li>
+                @endif
+
+
+
+                @if(Auth::user()->role == '1')
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle nav-pro-mopile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             المجتمع
           </a>
           <ul class="dropdown-menu">
-            @auth
-            <li><a class="dropdown-item {{ \Request::route()->getName() === 'page.posts' ? 'active' : '' }} " href="{{ route('page.posts') }}">انشاء منشور جديد</a></li>
-            @endauth
-            <li><a class="dropdown-item" href="#">مشاهدة المنشورات</a></li>
-            @auth
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">مراقبه المنشورات</a></li>
-            @endauth
+            <li><a class="dropdown-item nav-pro-mopile {{ \Request::route()->getName() === 'page.posts' ? 'active' : '' }} " href="{{ route('page.posts') }}">انشاء منشور جديد</a></li>
+            <li><a class="dropdown-item nav-pro-mopile" href="#">مراقبه المنشورات</a></li>
+                      <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item nav-pro-mopile" href="#">مشاهدة المنشورات </a></li>
           </ul>
         </li>
+        @endif
+        {{-- @if(Auth::user()->role == '1')
+        bavly
+        @else
+        ba
+        @endif --}}
 
-    </ul>
+
+        @endauth
+      </ul>
+
   @auth
 <ul class="nav navbar-nav  justify-content-end">
       <li class="nav-item dropdown">
     <a class="text-decoration-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <div class="litter" style="font-size: 20px; line-height: 36px;">
-        <span>{{Auth::user()->name[0]}}</span>
+        <span>{{Auth::user()->username[0]}}</span>
     </div>
           <ul class="dropdown-menu">
               <li><a class="dropdown-item nav-pro-mopile" href="#">Action</a></li>

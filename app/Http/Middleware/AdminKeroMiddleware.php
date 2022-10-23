@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
-class AdminMiddleware
+
+class AdminKeroMiddleware
 {
     /**
      * Handle an incoming request.
@@ -18,20 +19,17 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check()){
+        if (Auth::check()) {
 
-            // admin role == 1
+            // admin role == 2
             // use role == 0
 
-            if(Auth::user()->role == '1'){
+            if (Auth::user()->role == '2') {
                 return $next($request);
+            } else {
+                return redirect('/');
             }
-            else{
-                return redirect()->route('index');
-            }
-        }
-        else{
+        } else {
             return redirect('/login-admin');
-        }
-    }
+        }    }
 }

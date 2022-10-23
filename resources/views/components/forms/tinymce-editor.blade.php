@@ -1,11 +1,14 @@
-@auth
 <div>
     <!-- No surplus words or unnecessary actions. - Marcus Aurelius -->
 
-    <form method="post" class="form-new">
+    <form method="post" action="{{ route('posts.create') }}" class="form-new">
+        @csrf
         <div class="w-50 m-auto mt-0 " >
-            <textarea id="myeditorinstance" cols="50"></textarea>
+            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+            <textarea id="myeditorinstance" name="body" class="text-end" placeholder="{{Auth::user()->username}} اكتب ما تفكر فيه هنا" cols="50"></textarea>
+            <button type="submit" class="btn btn-primary w-100 mt-3 ">ارسال</button>
         </div>
+
     </form>
 </div>
 
@@ -27,4 +30,3 @@
 </div>
 
 
-@endauth
