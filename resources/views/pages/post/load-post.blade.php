@@ -1,32 +1,71 @@
 @extends('template.template')
 @section('content')
-<div class="post card" id="post-{{ $postId }}">
-  <div class="card-body">
-    <div class="post-content">
-        <h5 class="card-title d-flex align-items-center justify-content-start gap-2 my-2">
-            <span class="username d-flex align-items-center gap-2">author</span>
-            <span class="badge text-bg-primary">User</span>
-            <span class="dates text-muted fs-6 fw-normal ms-auto">postedOn</span>
-        </h5>
-        <p class="card-text">fullBody </p>
-    </div>
+@auth
+<style>
+.edit-hover:hover{
 
-<div class="post-actions mt-4 mb-3 d-flex items-center" id="post-{{ $postId }}-actions" data-post-id="{{ $postId }}">
-        <small class="text-muted ms-auto">commentsCount </small>
-    </div>    <hr />
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
 
+}
+</style>
+@forelse($posts as $post)
+  <div class="card" style="width: 50%; margin: 10px auto;">
+    <div class="card-body">
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title d-flex align-items-center gap-2">{{ $post->user->username }}<span class="badge text-bg-primary">admin</span></h5>
 
-    <div class="comment my-3">
-  <h6 class="user d-flex align-items-center justify-content-start gap-2 mb-3">
-    <span class="username d-flex align-items-center gap-2">commentAuthor </span>
-    <span class="badge text-bg-primary">User</span>
-    <span class="dates text-muted fs-6 fw-normal ms-auto">commentedOn</span>
-  </h6>
-  <div class="content">subBody ...</div>
+            <div class="d-flex justify-content-between">
+                <p class="dates text-muted fs-6 fw-normal">Posted {{ $post->created_at->diffForHumans() }}</p>
+          @if ($post->user->username == Auth::user()->username && Auth::user()->role == '1')
+          <div class="dropdown"> 
+  <a   data-bs-toggle="dropdown" class="user-select-none text-dark" style="cursor: pointer;" >
+          <span class="material-symbols-outlined ">more_vert</span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item edit-hover" href="#">
+        <span class="material-symbols-outlined ">edit</span>
+        تعديل المنشور
+    </a></li>
+    <li><a class="dropdown-item edit-hover" href="#">
+        <span class="material-symbols-outlined">delete</span>
+            حذف  المنشور
+    </a></li>
+  </ul>
 </div>
+            @endif
+            </div>
+        </div>
+        <hr>
+          <p class="card-text">{!! substr(nl2br($post->body), 0, 500) !!} </p>
 
+
+
+      {{-- <p class="card-text" style="padding: 1rem; margin: 1rem 0; border: 1px solid #ccc; border-radius: 6px">{!! nl2br($posts->body) !!}</p> --}}
 
     </div>
-</div>
+  </div>
+@empty
+  <div class="card">
+    <div class="card-body">
+        @auth
+                @if(Auth::user()->role == '1')
+                <p class="card-text">لا يوجد اي منشورات الان <a href="{{route('page.posts')}}">اضغط هنا لاضافه واحد</a> </p>
+                @else
+                <p class="card-text">No posts are available right now!
+                @endif
+            @else
+            <p class="card-text">  يجب تسجيل الدخول اولاً <a href="">من هنا</a> </p>
+        @endauth
+      </p>
+    </div>
+  </div>
+@endforelse
+@else
+<p class="card-text">  يجب تسجيل الدخول اولاً <a href="{{route('login.form.admin')}}">من هنا</a> </p>
+    @endauth
 @endsection
 

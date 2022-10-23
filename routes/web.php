@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\PostController;
-use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\Post;
+
 
 
 
@@ -28,6 +29,7 @@ Route::get('/login-admin', function () {
 })->name('login.form.admin')->middleware('guest');
 
 
+
 Route::post('/login/admin', [adminController::class, 'login'])->name('login');
 
 
@@ -44,8 +46,14 @@ Route::get('/post', function () {
 })->name('page.posts')->middleware('admin');
 
 Route::prefix('/')->group(function () {
-    Route::get('/load', [PostController::class, 'getPosts'])->name('posts.get');
     Route::post('/create', [PostController::class, 'createPost'])->name('posts.create');
 });
+
+Route::get('/load', function () {
+    return view('pages/post/load-post', [
+        'posts' => Post::all()
+    ]);
+})->name('load.post');
+
 
 

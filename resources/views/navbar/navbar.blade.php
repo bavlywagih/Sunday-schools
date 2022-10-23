@@ -38,7 +38,7 @@
             <li><a class="dropdown-item nav-pro-mopile {{ \Request::route()->getName() === 'page.posts' ? 'active' : '' }} " href="{{ route('page.posts') }}">انشاء منشور جديد</a></li>
             <li><a class="dropdown-item nav-pro-mopile" href="#">مراقبه المنشورات</a></li>
                       <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item nav-pro-mopile" href="#">مشاهدة المنشورات </a></li>
+            <li><a class="dropdown-item nav-pro-mopile" href="{{route('load.post')}}">مشاهدة المنشورات </a></li>
           </ul>
         </li>
         @endif
