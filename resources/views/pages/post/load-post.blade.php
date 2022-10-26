@@ -26,11 +26,11 @@
           <span class="material-symbols-outlined ">more_vert</span>
   </a>
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item edit-hover" href="#">
+    <li><a class="dropdown-item edit-hover" href="{{  route('post.edit' , $post->id) }}">
         <span class="material-symbols-outlined ">edit</span>
         تعديل المنشور
     </a></li>
-    <li><a class="dropdown-item edit-hover" href="#">
+    <li><a class="dropdown-item edit-hover" href="{{  route('post.delete' , $post->id) }}">
         <span class="material-symbols-outlined">delete</span>
             حذف  المنشور
     </a></li>
@@ -53,7 +53,7 @@
     <div class="card-body">
         @auth
                 @if(Auth::user()->role == '1')
-                <p class="card-text">لا يوجد اي منشورات الان <a href="{{route('page.posts')}}">اضغط هنا لاضافه واحد</a> </p>
+                <p class="card-text">لا يوجد اي منشورات الان <a href="{{route('posts.create.form')}}">اضغط هنا لاضافه واحد</a> </p>
                 @else
                 <p class="card-text">No posts are available right now!
                 @endif
@@ -65,7 +65,7 @@
   </div>
 @endforelse
 @else
-<p class="card-text">  يجب تسجيل الدخول اولاً <a href="{{route('login.form.admin')}}">من هنا</a> </p>
+<p class="card-text">  يجب تسجيل الدخول اولاً <a href="{{route('login.form')}}">من هنا</a> </p>
     @endauth
 @endsection
 

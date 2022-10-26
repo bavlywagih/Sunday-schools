@@ -1,59 +1,33 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\adminController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use App\Models\Post;
-
-
-
-
 
 Route::get('/', function () {
     return view('index');
 })->name('index');
 
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+Route::get('/login/admin', [AuthController::class, 'loginform'])->name('login.form')->middleware('guest');
+Route::post('/login/admin', [AuthController::class, 'login'])->name('login')->middleware('guest');
 
 
 
-// Route::prefix('admin')->middleware('auth')->group(function() {
-// link for page admins
-// });
+Route::post('/create', [PostController::class, 'createPost'])->name('posts.create');
+Route::get('/new-post', [PostController::class, 'form_createPost'])->name('posts.create.form')->middleware('admin');
+Route::get('/load', [ PostController::class, 'posts'])->name('load.post')->middleware('auth');
+Route::get('/posts/delete/{id}', [PostController::class, 'destroy'])->name('post.delete')->middleware('admin');
+Route::get('/posts/edit/{id}',   [PostController::class, 'edit'])->name('post.edit');
+Route::post('/posts/update/{id}',  [PostController::class, 'update'])->name('post.update');
 
 
 
-Route::get('/login-admin', function () {
-    return view('pages/login-admin');
-})->name('login.form.admin')->middleware('guest');
 
 
 
-Route::post('/login/admin', [adminController::class, 'login'])->name('login');
 
-
-Route::get('/logout', function (Request $request) {
-    Auth::logout();
-    $request->session()->invalidate();
-    $request->session()->regenerateToken();
-    return redirect()->route('index');
-})->name('logout')->middleware('auth');
-
-
-Route::get('/post', function () {
-    return view('pages.post.post');
-})->name('page.posts')->middleware('admin');
-
-Route::prefix('/')->group(function () {
-    Route::post('/create', [PostController::class, 'createPost'])->name('posts.create');
-});
-
-Route::get('/load', function () {
-    return view('pages/post/load-post', [
-        'posts' => Post::all()
-    ]);
-})->name('load.post');
 
 
 

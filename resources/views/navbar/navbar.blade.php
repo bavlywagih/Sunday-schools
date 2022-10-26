@@ -23,7 +23,7 @@
 
             @if(Auth::user()->role == '0')
                 <li class="nav-item">
-                  <a class="nav-link nav-pro-mopile " href="/">مشاهدة المنشورات </a>
+                  <a class="nav-link nav-pro-mopile " href="{{route('load.post')}}">مشاهدة المنشورات </a>
                 </li>
                 @endif
 
@@ -35,7 +35,7 @@
             المجتمع
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item nav-pro-mopile {{ \Request::route()->getName() === 'page.posts' ? 'active' : '' }} " href="{{ route('page.posts') }}">انشاء منشور جديد</a></li>
+            <li><a class="dropdown-item nav-pro-mopile {{ \Request::route()->getName() === 'posts.create.form' ? 'active' : '' }} " href="{{ route('posts.create.form') }}">انشاء منشور جديد</a></li>
             <li><a class="dropdown-item nav-pro-mopile" href="#">مراقبه المنشورات</a></li>
                       <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item nav-pro-mopile" href="{{route('load.post')}}">مشاهدة المنشورات </a></li>
@@ -71,7 +71,7 @@
     @else
   <ul class="nav navbar-nav  justify-content-end">
       <li class="nav-item">
-          <a class="nav-link nav-pro-mopile {{ \Request::route()->getName() === 'login.form.admin' ? 'active' : '' }}" href="{{ route('login.form.admin') }}"> تسجيل الدخول المشرفين</a>
+          <a class="nav-link nav-pro-mopile {{ \Request::route()->getName() === 'login.form' ? 'active' : '' }}" href="{{ route('login.form') }}"> تسجيل الدخول المشرفين</a>
         </li>
     </ul>
   @endauth

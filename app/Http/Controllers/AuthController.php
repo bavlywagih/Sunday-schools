@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
-
-class adminController extends Controller
+class AuthController extends Controller
 {
     public function login(Request $request)
     {
@@ -20,7 +18,7 @@ class adminController extends Controller
 
         $user = User::where('name', $validated['name'])->first();
 
-        if ( $user->password != $validated['password']) {
+        if ($user->password != $validated['password']) {
             return redirect()->back()->withErrors(['password' => 'The entered password is wrong!']);
         }
 
@@ -30,5 +28,15 @@ class adminController extends Controller
 
         return redirect()->route('index', compact('username'));
     }
+    public function loginform(){
+        return view('pages/login-admin');
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('index');
+        }
 
 }
