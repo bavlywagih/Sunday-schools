@@ -29,7 +29,7 @@ class AuthController extends Controller
         return redirect()->route('index', compact('username'));
     }
     public function loginform(){
-        return view('pages/login-admin');
+        return view('pages/login.login');
     }
     public function logout(Request $request)
     {

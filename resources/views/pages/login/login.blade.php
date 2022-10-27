@@ -10,7 +10,7 @@
           class="img-fluid" alt="Phone image">
         </div>
         <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-            <form action="/login/admin" method="POST">
+            <form action="{{ route('login') }}" method="POST">
                 @csrf
           <!-- Email input -->
           <div class="form-outline mb-4">

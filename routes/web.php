@@ -3,15 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
-use App\Models\Post;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Controller;
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
 
+
+Route::get('/', [Controller::class, 'index'])->name('index');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
-Route::get('/login/admin', [AuthController::class, 'loginform'])->name('login.form')->middleware('guest');
-Route::post('/login/admin', [AuthController::class, 'login'])->name('login')->middleware('guest');
+Route::get('/login', [AuthController::class, 'loginform'])->name('login.form')->middleware('guest');
+Route::post('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
 
 
 
@@ -21,6 +21,11 @@ Route::get('/load', [ PostController::class, 'posts'])->name('load.post')->middl
 Route::get('/posts/delete/{id}', [PostController::class, 'destroy'])->name('post.delete')->middleware('admin');
 Route::get('/posts/edit/{id}',   [PostController::class, 'edit'])->name('post.edit');
 Route::post('/posts/update/{id}',  [PostController::class, 'update'])->name('post.update');
+
+
+Route::get('/profile',  [ProfileController::class, 'profile'])->name('profile');
+Route::get( '/profile-edit',  [ProfileController::class, 'edit_profile'])->name('edit.profile');
+Route::post('/profile-update/{id}',  [ProfileController::class, 'update_profile'])->name('update.profile');
 
 
 

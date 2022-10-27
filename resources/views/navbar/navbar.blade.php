@@ -60,7 +60,7 @@
         <span>{{Auth::user()->username[0]}}</span>
     </div>
           <ul class="dropdown-menu">
-              <li><a class="dropdown-item nav-pro-mopile" href="#">Action</a></li>
+              <li><a class="dropdown-item nav-pro-mopile {{ \Request::route()->getName() === 'profile' ? 'active' : '' }}" href="{{ route('profile') }}">الملف الشخصي</a></li>
               <li><a class="dropdown-item nav-pro-mopile" href="#">Another action</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item nav-pro-mopile" href="{{ route('logout') }}"> تسجيل الخروج </a></li>
