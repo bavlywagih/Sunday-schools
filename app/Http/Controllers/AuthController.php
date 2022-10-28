@@ -28,15 +28,17 @@ class AuthController extends Controller
 
         return redirect()->route('index', compact('username'));
     }
-    public function loginform(){
+    
+    public function loginform()
+    {
         return view('pages/login.login');
     }
+
     public function logout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('index');
-        }
-
+    }
 }

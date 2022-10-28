@@ -21,6 +21,7 @@ Route::get('/load', [ PostController::class, 'posts'])->name('load.post')->middl
 Route::get('/posts/delete/{id}', [PostController::class, 'destroy'])->name('post.delete')->middleware('admin');
 Route::get('/posts/edit/{id}',   [PostController::class, 'edit'])->name('post.edit');
 Route::post('/posts/update/{id}',  [PostController::class, 'update'])->name('post.update');
+Route::post('/posts/image/upload', [PostController::class, 'uploadPostImage'])->name('posts.image.upload');
 
 
 Route::get('/profile',  [ProfileController::class, 'profile'])->name('profile');

@@ -1,13 +1,14 @@
+<h1 class="container ">صفحه انشاء منشور جديد</h1>
 <div>
     <!-- No surplus words or unnecessary actions. - Marcus Aurelius -->
 
-    <form method="post" action="{{ route('posts.create') }}" class="form-new">
+    <form method="post" action="{{ route('posts.create') }}" class="form-new" id="create-post-form">
         @csrf
         <div class="w-50 m-auto mt-0 " >
             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-            
-            <textarea id="myeditorinstance"  name="body" class="text-end" placeholder="{{Auth::user()->username}} اكتب ما تفكر فيه هنا" cols="50"></textarea>
 
+            <textarea id="post-editor"  name="body" class="text-end" placeholder="{{Auth::user()->username}} اكتب ما تفكر فيه هنا" cols="50"></textarea>
+@include('components.head.tinymce-config')
             <button type="submit" class="btn btn-primary w-100 mt-3 ">ارسال</button>
 
         </div>
@@ -15,7 +16,9 @@
     </form>
 </div>
 
+<script>
 
+</script>
 
 <div class="toast-container position-fixed bottom-0 end-0 p-3  ">
     <div id="liveToast"  class="toast show" role="alert" aria-live="assertive" aria-atomic="true">

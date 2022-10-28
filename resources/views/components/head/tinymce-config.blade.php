@@ -2,17 +2,33 @@
     <!-- Waste no more time arguing what a good man should be, be one. - Marcus Aurelius -->
     <script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
 <script>
-  tinymce.init({
-    selector: 'textarea#myeditorinstance', // Replace this CSS selector to match the placeholder element for TinyMCE
-  plugins: [
-    'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
-    'searchreplace', 'wordcount', 'visualblocks', 'code', 'fullscreen', 'insertdatetime', 'media',
-    'table', 'emoticons', 'template', 'help' ],
-        // toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table',
-    menu: {
-            insert: { title: 'Insert', items: 'image link media addcomment pageembed template codesample inserttable | charmap emoticons hr | pagebreak nonbreaking anchor tableofcontents | insertdatetime' },
-    }
-  });
-  
+
+
+ tinymce.init({
+  selector: 'textarea#post-editor',
+  plugins: ['link', 'anchor', 'wordcount', 'code', 'insertdatetime', 'table', 'image'],
+  toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+  file_picker_callback: (callback, value, meta) => {
+    const input = document.createElement('input');
+    input.setAttribute('type', 'file');
+    input.setAttribute('accept', 'image/*');
+
+    input.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      const formData = new FormData();
+
+      formData.append('_token', document.querySelector('meta[name="_token"]').getAttribute('content'));
+      formData.append('image', file);
+
+      axios.post('/posts/image/upload', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      }).then(response => {
+        callback(response.data.image, { title: file.name });
+      });
+    });
+    input.click();
+  },
+});
+
 </script>
 </div>

@@ -23,7 +23,7 @@
 
             @if(Auth::user()->role == '0')
                 <li class="nav-item">
-                  <a class="nav-link nav-pro-mopile " href="{{route('load.post')}}">مشاهدة المنشورات </a>
+                  <a class="nav-link nav-pro-mopile {{ \Request::route()->getName() === 'load.post' ? 'active' : '' }}" href="{{route('load.post')}}">مشاهدة المنشورات </a>
                 </li>
                 @endif
 
@@ -36,17 +36,27 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item nav-pro-mopile {{ \Request::route()->getName() === 'posts.create.form' ? 'active' : '' }} " href="{{ route('posts.create.form') }}">انشاء منشور جديد</a></li>
-            <li><a class="dropdown-item nav-pro-mopile" href="#">مراقبه المنشورات</a></li>
                       <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item nav-pro-mopile" href="{{route('load.post')}}">مشاهدة المنشورات </a></li>
+            <li><a class="dropdown-item nav-pro-mopile {{ \Request::route()->getName() === 'load.post' ? 'active' : '' }}" href="{{route('load.post')}}">مشاهدة المنشورات </a></li>
           </ul>
         </li>
         @endif
-        {{-- @if(Auth::user()->role == '1')
-        bavly
-        @else
-        ba
-        @endif --}}
+
+
+
+        @if(Auth::user()->role == '1')
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle nav-pro-mopile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            ملخص الدروس
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item nav-pro-mopile  " href="#">انشاء  ملخص درس</a></li>
+                      <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item nav-pro-mopile" href="#">مشاهدة ملخص درس  </a></li>
+          </ul>
+        </li>
+        @endif
+
 
 
         @endauth
@@ -71,7 +81,7 @@
     @else
   <ul class="nav navbar-nav  justify-content-end">
       <li class="nav-item">
-          <a class="nav-link nav-pro-mopile {{ \Request::route()->getName() === 'login.form' ? 'active' : '' }}" href="{{ route('login.form') }}"> تسجيل الدخول المشرفين</a>
+          <a class="nav-link nav-pro-mopile {{ \Request::route()->getName() === 'login.form' ? 'active' : '' }}" href="{{ route('login.form') }}"> تسجيل الدخول </a>
         </li>
     </ul>
   @endauth
