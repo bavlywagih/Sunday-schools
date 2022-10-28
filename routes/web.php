@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LessonController;
 use App\Http\Controllers\Controller;
 
 
@@ -30,7 +31,17 @@ Route::post('/profile-update/{id}',  [ProfileController::class, 'update_profile'
 
 
 
+// Route::get('/new-lesson', [LessonController::class, 'form_createlesson'])->name('lesson.create.form')->middleware('admin');
+// Route::post('/create/lesson', [LessonController::class, 'createlesson'])->name('lesson.create');
 
+
+// Route::post('/create', [PostController::class, 'createPost'])->name('posts.create');
+// Route::get('/new-post', [PostController::class, 'form_createPost'])->name('posts.create.form')->middleware('admin');
+// Route::get('/load', [PostController::class, 'posts'])->name('load.post')->middleware('auth');
+// Route::get('/posts/delete/{id}', [PostController::class, 'destroy'])->name('post.delete')->middleware('admin');
+// Route::get('/posts/edit/{id}',   [PostController::class, 'edit'])->name('post.edit');
+// Route::post('/posts/update/{id}',  [PostController::class, 'update'])->name('post.update');
+// Route::post('/posts/image/upload', [PostController::class, 'uploadPostImage'])->name('posts.image.upload');
 
 
 

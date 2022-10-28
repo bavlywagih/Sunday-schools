@@ -24,6 +24,7 @@
         headers: { 'Content-Type': 'multipart/form-data' }
       }).then(response => {
         callback(response.data.image, { title: file.name });
+        console.log(response.data.image)
       });
     });
     input.click();
