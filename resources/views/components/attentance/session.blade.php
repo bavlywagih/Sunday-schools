@@ -1,13 +1,6 @@
 @extends('template.template')
 @section('content')
 
-{{-- <div class="container">
-    <div class="card">
-        <h2 class="card-title">
-            {!! $session->body !!}
-        </h2>
-    </div>
-</div> --}}
 
 <div class="d-flex align-items-start mt-3">
                         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -21,13 +14,12 @@
                                 <thead>
                                   <tr>
                                     <th scope="col " style="border: 0">
-                                    <div class="card">
+                                    <div class="card w-75 m-auto">
                                       <div class="card-body">
                                         <div style="display: flex;justify-content: space-between;">
                                             <h5 class="card-title">{{$session->title }}</h5>
                                             <div>
 <div class="d-flex">
-
     <p class="card-text">{{$session->created_at->diffForHumans()}}</p>
     <div class="dropdown">
         <a   data-bs-toggle="dropdown" class="user-select-none text-dark" style="cursor: pointer;" >
@@ -36,11 +28,11 @@
                                                     <ul class="dropdown-menu">
                                                           <li><a class="dropdown-item edit-hover" href="">
                                                               <span class="material-symbols-outlined ">edit</span>
-                                                              تعديل المنشور
+                                                              تعديل الدرس
                                                             </a></li>
-                                                            <li><a class="dropdown-item edit-hover" href="">
+                                                            <li><a class="dropdown-item edit-hover" href="{{  route('session.delete' , $session->id) }}">
                                                                 <span class="material-symbols-outlined">delete</span>
-                                                                حذف  المنشور
+                                                                حذف  الدرس
                                                             </a></li>
                                                         </ul>
                                                     </div>
@@ -49,16 +41,10 @@
                                         </div>
                                         </div>
                                         <hr>
-                                                {{-- @foreach ($session->attentances as $attentance)
-                                                    {{ ($attentance->user->username ) }} <br>
-                                                @endforeach --}}
-                                            <h5 class="card-title">{!!$session->body !!}</h5>
-                                      </div>
+                                            <h5 class="card-title p-3">{!! substr(nl2br($session->body), 0) !!}</h5>
+                                        </div>
 
                                 </thead>
-                                {{-- <tbody> --}}
-                                    {{-- <td class="border-0" scope="col">{!! $session->title !!} </td> --}}
-                                {{-- </tbody> --}}
                             </table>
 
                           </div>

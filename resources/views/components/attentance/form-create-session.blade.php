@@ -21,6 +21,7 @@
                                             @include('components.head.tinymce-config')
                                         </div>
 
+
                                         <label for="grade" class="form-label">الفصل</label>
                                         <select class="form-select" id="grade" name="grade_id">
                                             <option selected value="0">يرجي تحديد الفصل</option>

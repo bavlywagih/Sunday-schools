@@ -57,5 +57,7 @@
 @else
 <p class="card-text">  يجب تسجيل الدخول اولاً <a href="{{route('login.form')}}">من هنا</a> </p>
     @endauth
+
+
 @endsection
 

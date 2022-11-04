@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 
 class Session extends Model
@@ -20,4 +21,6 @@ class Session extends Model
     {
         return $this->hasMany(Attentance::class, 'session_id', 'id');
     }
+
+
 }

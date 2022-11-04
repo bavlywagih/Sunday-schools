@@ -38,9 +38,11 @@ Route::post('/profile-update/{id}',  [ProfileController::class, 'update_profile'
 Route::get('/attentance',         [attendanceController::class, 'attentance'])->name('attendance');
 Route::post('/create-grade',      [attendanceController::class, 'create_grade'])->name('create-grade');
 Route::get('/session/{id}',       [attendanceController::class, 'session'])->name('session');
-Route::get('/grade/{id}',       [attendanceController::class, 'grade'])->name('grade');
+Route::get('/grade/{id}',         [attendanceController::class, 'grade'])->name('grade');
 Route::post('/create-session',    [attendanceController::class, 'create_session'])->name('create-session');
 Route::post('/collect-attendance',[attendanceController::class, 'collect_attendance'])->name('collect-attendance');
+Route::get('session/delete/{id}', [attendanceController::class, 'delete'])->name('session.delete');
+
 
 
 

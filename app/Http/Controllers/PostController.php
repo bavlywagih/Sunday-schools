@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use DOMDocument;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -18,7 +19,24 @@ class PostController extends Controller
             'user_id' => ['required']
         ]);
 
-        Post::create($validated);
+
+
+        // $document = new DOMDocument();
+        // $document->loadHTML($validated['body']);
+        // $imgs = $document->getElementsByTagName('img');
+
+        // foreach ($imgs as $img) {
+        //     $modifiedSrc = 'http://127.0.0.1:8000/' . $img->getAttribute('src');
+        //     $img->setAttribute('src', $modifiedSrc);
+        // }
+
+        // $body = $document->getElementsByTagName('body');
+
+        // if ($body && 0 < $body->length) {
+        //     $body = $body->item(0);
+        // }
+
+        Post::create(['body' =>  $validated['body'] , 'user_id' => $validated['user_id']]);
         return redirect()->back();
     }
 
@@ -62,7 +80,6 @@ class PostController extends Controller
         $fileName = time() . '_' . Str::random(10) . '_' . $file->getClientOriginalExtension() . '.' . $file->guessClientExtension();
         $path = Storage::putFileAs('public/posts-images', $file, $fileName);
         $pathArray = explode('/', $path);
-        // $pathArray[1] = "";
         $pathArray[0] = "storage";
 
         array_unshift($pathArray, env('APP_URL', 'http://127.0.0.1:8000'));

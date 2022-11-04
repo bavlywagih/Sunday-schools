@@ -7,6 +7,7 @@ use App\Models\Grade;
 use App\Models\Session;
 use App\Models\User;
 use App\Models\Attentance;
+use DOMDocument;
 use Illuminate\Support\Facades\DB;
 
 
@@ -49,10 +50,45 @@ class attendanceController extends Controller
     public function create_session(Request $request)
     {
         if ($request->grade_id == '0') return redirect()->back();
-        Session::create(['title' => $request->title,'body' => $request->body, 'grade_id' => $request->grade_id]);
+        $validated = $request->validate([
+            'title' => ['required'],
+            'body' => ['required'],
+            'grade_id' => ['required']
+        ]);
+        // $document = new DOMDocument();
+        // $document->loadHTML($validated['body']);
+        // $imgs = $document->getElementsByTagName('img');
+
+
+        // foreach ($imgs as $img) {
+        //     $modifiedSrc = 'http://127.0.0.1:8000/' . $img->getAttribute('src');
+        //     $img->setAttribute('src', $modifiedSrc);
+        // }
+
+        // $body = $document->getElementsByTagName('body');
+
+
+
+        // if ($body && 0 < $body->length) {
+        //     $body = $body->item(0);
+        // }
+
+        Session::create([
+            'title' => $request->title,
+            // 'body' => $document->saveHTML($body),
+            'body' => $request->body,
+              'grade_id' => $request->grade_id
+            ]);
+
+
+
         return redirect('/attentance');
     }
-
+    public function delete ($id)
+    {
+        Session::findorfail($id)->delete();
+        return redirect('/attentance');
+        }
 
 
     public function collect_attendance(Request $request)
@@ -65,4 +101,7 @@ class attendanceController extends Controller
 
         return redirect('/attentance');
     }
+
+
+
 }

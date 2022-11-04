@@ -17,19 +17,27 @@
                         <div class="litter litter-profile" >
 
                             <span>{{Auth::user()->username[0]}}</span>
-            @if(Auth::user()->role == '1')
+
+            <div class="dropdown">
+        <a   data-bs-toggle="dropdown" class="user-select-none text-dark" style="cursor: pointer;" >
             <div class="card-title d-flex align-items-center gap-2 " title="مشرف في الموقع ">
                 <span class="material-symbols-outlined icon-admin-profile">
-                    admin_panel_settings
+                    add
                 </span>
             </div>
-            @else
-            <div class="card-title d-flex align-items-center gap-2 " title="مستخدم في الموقع ">
-                <span class="material-symbols-outlined icon-admin-profile">
-                    person
-                </span>
-            </div>
-            @endif
+        </a>
+        <ul class="dropdown-menu">
+              <li><a class="dropdown-item edit-hover" href="">
+                  <span class="material-symbols-outlined ">edit</span>
+                  تعديل المنشور
+                </a></li>
+                <li><a class="dropdown-item edit-hover" href="">
+                    <span class="material-symbols-outlined">delete</span>
+                    حذف  المنشور
+                </a></li>
+            </ul>
+        </div>
+
                         </div>
 
                   </div>
