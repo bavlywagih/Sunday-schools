@@ -62,10 +62,12 @@ class PostController extends Controller
         $fileName = time() . '_' . Str::random(10) . '_' . $file->getClientOriginalExtension() . '.' . $file->guessClientExtension();
         $path = Storage::putFileAs('public/posts-images', $file, $fileName);
         $pathArray = explode('/', $path);
+        // $pathArray[1] = "";
         $pathArray[0] = "storage";
 
         array_unshift($pathArray, env('APP_URL', 'http://127.0.0.1:8000'));
         $path = implode('/', $pathArray);
+
 
         return ['image' => $path];
     }

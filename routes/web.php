@@ -6,6 +6,12 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\attendanceController;
+
+use App\Models\Attentance;
+use App\Models\Grade;
+use App\Models\Session;
+use Illuminate\Http\Request;
 
 
 
@@ -28,6 +34,16 @@ Route::post('/posts/image/upload', [PostController::class, 'uploadPostImage'])->
 Route::get('/profile',  [ProfileController::class, 'profile'])->name('profile');
 Route::get( '/profile-edit',  [ProfileController::class, 'edit_profile'])->name('edit.profile');
 Route::post('/profile-update/{id}',  [ProfileController::class, 'update_profile'])->name('update.profile');
+
+Route::get('/attentance',         [attendanceController::class, 'attentance'])->name('attendance');
+Route::post('/create-grade',      [attendanceController::class, 'create_grade'])->name('create-grade');
+Route::get('/session/{id}',       [attendanceController::class, 'session'])->name('session');
+Route::get('/grade/{id}',       [attendanceController::class, 'grade'])->name('grade');
+Route::post('/create-session',    [attendanceController::class, 'create_session'])->name('create-session');
+Route::post('/collect-attendance',[attendanceController::class, 'collect_attendance'])->name('collect-attendance');
+
+
+
 
 
 

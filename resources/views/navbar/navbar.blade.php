@@ -25,7 +25,7 @@
                 <li class="nav-item">
                   <a class="nav-link nav-pro-mopile {{ \Request::route()->getName() === 'load.post' ? 'active' : '' }}" href="{{route('load.post')}}">مشاهدة المنشورات </a>
                 </li>
-                @endif
+            @endif
 
 
 
@@ -55,6 +55,12 @@
             <li><a class="dropdown-item nav-pro-mopile" href="#">مشاهدة ملخص درس  </a></li>
           </ul>
         </li>
+        @endif
+
+                @if(Auth::user()->role == '1')
+                <li class="nav-item">
+                  <a class="nav-link nav-pro-mopile {{ \Request::route()->getName() === 'load.post' ? 'active' : '' }}" href="{{route('attendance')}}"> اخري </a>
+                </li>
         @endif
 
 
