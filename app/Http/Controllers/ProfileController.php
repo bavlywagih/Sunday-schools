@@ -9,11 +9,11 @@ class ProfileController extends Controller
 {
     public function profile()
     {
-        return view('pages/profile/profile');
+        return view('profile/profile');
     }
         public function edit_profile()
     {
-        return view('pages/profile/edit-profile');
+        return view('/profile/ProfileEdit');
     }
     public function update_profile(Request $request, $id)
     {

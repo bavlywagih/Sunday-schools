@@ -42,13 +42,13 @@ class PostController extends Controller
 
 
     public function form_createPost(){
-        return view('pages.post.post');
+        return view('post.new-post');
     }
 
     public function posts()
     {
         $posts = post::orderBy('id', 'desc')->get();
-        return view('pages/post/load-post', compact('posts'));
+        return view('post.PostsList', compact('posts'));
 
 
     }
@@ -61,7 +61,7 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = post::findorfail($id);
-        return view('pages/post/edit', compact('post'));
+        return view('post.edit-post', compact('post'));
     }
     public function update(Request $request, $id)
     {

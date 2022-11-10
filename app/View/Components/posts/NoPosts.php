@@ -1,15 +1,13 @@
 <?php
 
-namespace App\View\Components\Forms;
+namespace App\View\Components\posts;
 
 use Illuminate\View\Component;
-use Illuminate\Support\Facades\Auth;
 
-
-class tinymceEditor extends Component
+class NoPosts extends Component
 {
-    public string $create;
-    public string $AuthUsername;
+    public string $loginLink;
+
     /**
      * Create a new component instance.
      *
@@ -17,9 +15,7 @@ class tinymceEditor extends Component
      */
     public function __construct()
     {
-        $this->create = route('posts.create');
-        $this->AuthUsername = Auth::user()->username;
-        
+        $this->loginLink = route('login.form');
     }
 
     /**
@@ -29,6 +25,6 @@ class tinymceEditor extends Component
      */
     public function render()
     {
-        return view('forms.tinymce-editor');
+        return view('post.no-posts');
     }
 }
