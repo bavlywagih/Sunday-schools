@@ -7,6 +7,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\attendanceController;
+use App\Http\Controllers\LibraryController;
+use Illuminate\Http\Request;
+
 
 // use App\Models\Attentance;
 // use App\Models\Grade;
@@ -41,8 +44,17 @@ Route::get('/session/{id}',       [attendanceController::class, 'session'])->nam
 Route::get('/grade/{id}',         [attendanceController::class, 'grade'])->name('grade');
 Route::post('/create-session',    [attendanceController::class, 'create_session'])->name('create-session');
 Route::post('/collect-attendance',[attendanceController::class, 'collect_attendance'])->name('collect-attendance');
-Route::get('session/delete/{id}', [attendanceController::class, 'delete'])->name('session.delete');
+Route::get('/session/delete/{id}', [attendanceController::class, 'delete'])->name('session.delete');
 
+
+Route::get( '/library', [LibraryController::class, 'library'])->name('library');
+Route::get('/sorting/{id}', [LibraryController::class, 'show'])->name('show');
+Route::get('/books/{id}', [LibraryController::class, 'showbook'])->name('showbook');
+Route::get('/book/delete/{id}', [attendanceController::class, 'delete'])->name('book.delete');
+
+Route::post('/create/sorting', [ LibraryController::class, 'CreatesSorting'])->name('create-sorting');
+Route::post('/library', [LibraryController::class, 'Createlibrary'])->name('create-library');
+Route::post('/create/books', [LibraryController::class, 'CreateBooks'])->name('create-books');
 
 
 

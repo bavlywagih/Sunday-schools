@@ -24,9 +24,9 @@ class attendanceController extends Controller
     }
     public function session($id)
     {
-        $session = Session::findorfail($id);
+        $sessions = Session::findorfail($id);
 
-        return view('components.attentance.session', compact( 'session' ));
+        return view('components.attentance.session', compact( 'sessions' ));
     }
 
 
@@ -96,7 +96,9 @@ class attendanceController extends Controller
         if ($request->session_id == '0') return redirect()->back();
 
         foreach ($request->users as $user) {
+
             Attentance::create(['session_id' => $request->session_id, 'user_id' => $user]);
+
         }
 
         return redirect('/attentance');

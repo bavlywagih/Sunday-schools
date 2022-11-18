@@ -10,5 +10,3 @@
 
 
 
-    {{-- refactoring this code and make a class
-    --}}

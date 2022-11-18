@@ -30,9 +30,7 @@
 		@auth
 
 		<li class="nav-item">
-
-		  <button class="nav-link border border-0 bg-transparent nav-pro-mopile" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">المكتبه</button>
-
+		  <a class="nav-link nav-pro-mopile {{ $currentRouteName === 'library' ? 'active' : '' }}" href="{{$library}}">المكتبه</a>
 		</li>
 
 
@@ -71,7 +69,7 @@
 
 			<li class="nav-item">
 
-			    <a class="nav-link nav-pro-mopile {{ $currentRouteName === 'load.post' ? 'active' : '' }}" href="{{route('attendance')}}"> اخري </a>
+			    <a class="nav-link nav-pro-mopile {{ $currentRouteName === 'attendance' ? 'active' : '' }}" href="{{route('attendance')}}"> اخري </a>
 
 			</li>
 

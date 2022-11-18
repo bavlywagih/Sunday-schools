@@ -22,6 +22,8 @@ class PostController extends Controller
 
 
         // $document = new DOMDocument();
+
+        // $document->encoding = 'utf-8';
         // $document->loadHTML($validated['body']);
         // $imgs = $document->getElementsByTagName('img');
 
@@ -33,10 +35,15 @@ class PostController extends Controller
         // $body = $document->getElementsByTagName('body');
 
         // if ($body && 0 < $body->length) {
-        //     $body = $body->item(0);
+        //     $body = $body->item(0)->firstChild;
         // }
 
-        Post::create(['body' =>  $validated['body'] , 'user_id' => $validated['user_id']]);
+
+        // dd(utf8_decode($document->saveHTML($body)));
+
+
+        // Post::create(['body' =>  utf8_decode($document->saveHTML($body)), 'user_id' => $validated['user_id']]);
+        Post::create(['body' =>  $validated['body'], 'user_id' => $validated['user_id']]);
         return redirect()->back();
     }
 
