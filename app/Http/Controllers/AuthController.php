@@ -11,7 +11,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $validated = $request->validate([
-            'name' => ['required', 'exists:users'],
+            'name' => ['required', 'exists:users,name'],
             'password' => ['required'],
             'remember' => ['boolean']
         ]);
@@ -24,9 +24,8 @@ class AuthController extends Controller
 
         Auth::login($user,  $validated['remember']);
 
-        $username = User::query()->where('name', $validated['name'])->firstOrFail();
 
-        return redirect()->route('index', compact('username'));
+        return redirect()->route('index');
     }
 
     public function loginform()

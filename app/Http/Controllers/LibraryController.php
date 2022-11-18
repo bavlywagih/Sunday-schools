@@ -13,23 +13,18 @@ class LibraryController extends Controller
     {
         $sortings = sortings::with('librarys')->get();
         $books = books::all();
-        // dd($sortings);
-        return view('library.library' , compact('sortings','books'));
+        return view('library.library',compact('sortings','books'));
     }
+
     public function show($id)
     {
         $sortings = sortings::findorfail($id);
-        // dd($sortings);
-
-        // $books = books::all();
         return view('library.show.showsorting', compact('sortings'));
     }
+
     public function showbook($id)
     {
         $books = books::findorfail($id);
-        // dd($sortings);
-
-        // $books = books::all();
         return view('library.show.books', compact('books'));
     }
 
@@ -40,14 +35,11 @@ class LibraryController extends Controller
             'book_id' => ['required'],
             'sorting_id' => ['required'],
         ]);
-
-    $books =  $validated['book_id'];
-
-    foreach($books as $book) {
+        $books =  $validated['book_id'];
+        foreach($books as $book) {
             Librarys::create(['sorting_id' => $validated['sorting_id'], "book_id" => $book ]);
         }
         return redirect()->back();
-
     }
 
     public function CreatesSorting(Request $request)
@@ -68,6 +60,4 @@ class LibraryController extends Controller
         Books::create(['name' =>  $validated['name'], 'url' =>  $validated['url']]);
         return redirect()->back();
     }
-
-
 }
