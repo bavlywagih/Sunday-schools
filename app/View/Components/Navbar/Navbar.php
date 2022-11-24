@@ -16,7 +16,6 @@ class Navbar extends Component
     public string $profile;
     public string $logout;
     public string $login;
-    public string $createPost;
     public string $library;
 
 
@@ -37,7 +36,6 @@ class Navbar extends Component
         $this->profile = route('profile');
         $this->logout = route('logout');
         $this->login = route('login.form');
-        $this->createPost = route('posts.create.form');
         $this->library = route('library');
 
 

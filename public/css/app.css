@@ -36,21 +36,6 @@ html {
 }
 
 
-@media (max-width:1023px) {
-    section {
-        padding: 80px 20px;
-    }
-
-    .main h2 {
-        color: black;
-    }
-
-    .main p {
-        color: #000;
-    }
-}
-
-
 .divider:after,
 .divider:before {
     content: "";
@@ -88,7 +73,6 @@ html {
 }
 
 
-/* not admin */
 #handboy {
     animation: swing ease-in-out 1.3s infinite alternate;
     transform-origin: 98% 98%;
@@ -116,7 +100,6 @@ html {
 
 }
 
-/*************swing************/
 @keyframes swing {
     0% {
         transform: rotate(10deg);
@@ -128,7 +111,6 @@ html {
 }
 
 
-/*************swing hair************/
 @keyframes swinghair {
     0% {
         transform: rotate(6deg);
@@ -139,7 +121,6 @@ html {
     }
 }
 
-/*  */
 
 .main-body {
     padding: 15px;
@@ -259,12 +240,32 @@ img {
         padding: 80px 20px;
     }
 
+    .book {
+        width: 92% !important;
+    }
+
     .main h2 {
         color: black;
     }
 
     .main p {
         color: #000;
+    }
+
+    section {
+        padding: 80px 20px;
+    }
+
+    .main h2 {
+        color: black;
+    }
+
+    .main p {
+        color: #000;
+    }
+
+    .mobile-width {
+        width: 90% !important;
     }
 }
 
@@ -273,8 +274,6 @@ img {
     justify-content: space-between;
 
 }
-
-
 
 .person:hover {
     font-variation-settings:
@@ -295,3 +294,11 @@ img {
 .user-admin {
     cursor: default;
 }
+
+
+
+
+
+
+
+

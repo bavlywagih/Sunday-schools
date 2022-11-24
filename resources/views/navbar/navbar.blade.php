@@ -34,39 +34,15 @@
 		</li>
 
 
-		@if($userRole)
 
-			<li class="nav-item">
 
-			  <a class="nav-link nav-pro-mopile {{ $currentRouteName === 'load.post' ? 'active' : '' }}" href="{{ $loadPost }}">مشاهدة المنشورات </a>
 
-			</li>
 
-		@endif
+@auth
+        <li class="nav-item"><a class="nav-link nav-pro-mopile {{ $currentRouteName === 'load.post' ? 'active' : '' }}" href="{{ $loadPost }}"> المجتمع </a></li>
+@endauth
 
 		@if($adminRole)
-
-			<li class="nav-item dropdown">
-
-				<a class="nav-link dropdown-toggle nav-pro-mopile nav-text-litter" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">المجتمع</a>
-
-				<ul class="dropdown-menu">
-
-					<li><a class="dropdown-item nav-pro-mopile nav-text-litter {{ $currentRouteName === 'posts.create.form' ? 'active' : '' }} " href="{{ $createPost }}">انشاء منشور جديد</a></li>
-
-					<li><hr class="dropdown-divider"></li>
-
-				  <li><a class="dropdown-item nav-pro-mopile nav-text-litter {{ $currentRouteName === 'load.post' ? 'active' : '' }}" href="{{ $loadPost }}">مشاهدة المنشورات </a></li>
-
-				</ul>
-
-			</li>
-
-		@endif
-
-
-		@if($adminRole)
-
 			<li class="nav-item">
 
 			    <a class="nav-link nav-pro-mopile {{ $currentRouteName === 'attendance' ? 'active' : '' }}" href="{{route('attendance')}}"> اخري </a>

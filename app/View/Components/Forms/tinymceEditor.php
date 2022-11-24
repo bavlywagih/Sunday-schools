@@ -4,22 +4,27 @@ namespace App\View\Components\Forms;
 
 use Illuminate\View\Component;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Post as PostModel;
+
 
 
 class tinymceEditor extends Component
 {
     public string $create;
     public string $AuthUsername;
+    public string $checkadmin;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(postModel $post)
     {
         $this->create = route('posts.create');
         $this->AuthUsername = Auth::user()->username;
-        
+        $this->checkadmin =  Auth::user()->role == '1';
+
+
     }
 
     /**

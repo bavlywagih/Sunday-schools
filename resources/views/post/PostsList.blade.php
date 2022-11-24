@@ -1,5 +1,9 @@
 @extends('template.template')
 @section('content')
+<div >
+
+    <x-forms.tinymce-editor/>
+
     <div class="posts-container" id="posts-container">
 
         @forelse($posts as $post)
@@ -13,4 +17,5 @@
         @endforelse
 
     </div>
+</div>
 @endsection

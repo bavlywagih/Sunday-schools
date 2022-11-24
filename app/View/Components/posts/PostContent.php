@@ -4,7 +4,6 @@ namespace App\View\Components\posts;
 
 use App\Models\Post as PostModel;
 use Illuminate\View\Component;
-use Illuminate\Support\Facades\Auth;
 
 
 
@@ -14,11 +13,8 @@ class PostContent extends Component
     public string $postedOn;
     public int $bodyLength;
     public string $fullBody;
-    public string $checkuser;
-
     public string $subBody;
-    public string $edit;
-    public string $delete;
+
     /**
      * Create a new component instance.
      *
@@ -31,9 +27,7 @@ class PostContent extends Component
         $this->bodyLength = strlen($post->body);
         $this->fullBody = nl2br($post->body);
         $this->subBody = substr($post->body, 0, 400);
-        $this->checkuser = $post->user->username == Auth::user()->username && Auth::user()->role == '1';
-        $this->edit = route('post.edit' , $post->id);
-        $this->delete = route('post.delete', $post->id);
+
     }
 
     /**

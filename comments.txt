@@ -1,0 +1,32 @@
+==== Post Controller====
+         $document = new DOMDocument();
+         $document->encoding = 'utf-8';
+         $document->loadHTML($validated['body']);
+         $imgs = $document->getElementsByTagName('img');
+
+         foreach ($imgs as $img) {
+             $modifiedSrc = 'http://127.0.0.1:8000/' . $img->getAttribute('src');
+             $img->setAttribute('src', $modifiedSrc);
+         }
+
+         $body = $document->getElementsByTagName('body');
+
+         if ($body && 0 < $body->length) {
+             $body = $body->item(0)->firstChild;
+         }
+
+         dd(utf8_decode($document->saveHTML($body)));
+
+         Post::create(['body' =>  utf8_decode($document->saveHTML($body)), 'user_id' => $validated['user_id']]);
+
+==== books ====
+<div class="card d-flex" style="width: 18rem;">
+    <div><iframe src="{{$books->url}}" class="card-img-top" width="640" height="480" ></iframe></div>
+    <div class="card-body">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div> --}}
+{{-- <div>
+    <div><iframe src="{{$books->url}}" class="card-img-top" width="640" height="480" ></iframe></div>
+    <div>mmnmnm</div>
+</div>
