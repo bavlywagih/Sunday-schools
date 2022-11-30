@@ -30,3 +30,16 @@
     <div><iframe src="{{$books->url}}" class="card-img-top" width="640" height="480" ></iframe></div>
     <div>mmnmnm</div>
 </div>
+
+====route====
+// Route::get('/new-lesson', [LessonController::class, 'form_createlesson'])->name('lesson.create.form')->middleware('admin');
+// Route::post('/create/lesson', [LessonController::class, 'createlesson'])->name('lesson.create');
+
+
+// Route::post('/create', [PostController::class, 'createPost'])->name('posts.create');
+// Route::get('/new-post', [PostController::class, 'form_createPost'])->name('posts.create.form')->middleware('admin');
+// Route::get('/load', [PostController::class, 'posts'])->name('load.post')->middleware('auth');
+// Route::get('/posts/delete/{id}', [PostController::class, 'destroy'])->name('post.delete')->middleware('admin');
+// Route::get('/posts/edit/{id}',   [PostController::class, 'edit'])->name('post.edit');
+// Route::post('/posts/update/{id}',  [PostController::class, 'update'])->name('post.update');
+// Route::post('/posts/image/upload', [PostController::class, 'uploadPostImage'])->name('posts.image.upload');

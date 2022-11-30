@@ -1,11 +1,13 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\attendance\Create;
 
 use Illuminate\View\Component;
 
-class PostActions extends Component
+class CreateGrade extends Component
 {
+    public string $create;
+
     /**
      * Create a new component instance.
      *
@@ -13,7 +15,8 @@ class PostActions extends Component
      */
     public function __construct()
     {
-        //
+        $this->create = route('create-grade');
+
     }
 
     /**
@@ -23,6 +26,6 @@ class PostActions extends Component
      */
     public function render()
     {
-        return view('components.post-actions');
+        return view('attendance.create.create-grade');
     }
 }

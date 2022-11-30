@@ -23,6 +23,8 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->date('birthday');
+            $table->foreignId('grade_id')->nullable()->constrained('grades')->cascadeOnDelete()->cascadeOnUpdate();
+
         });
     }
 
