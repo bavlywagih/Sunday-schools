@@ -17,7 +17,7 @@ class AdminKeroMiddleware
             // admin role == 2
             // use role == 0
 
-            if (Auth::user()->role == '2') {
+            if (Auth::user()->role == '3') {
                 return $next($request);
             } else {
                 return redirect('/');

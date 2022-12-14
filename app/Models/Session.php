@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Session extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'grade_id'];
+    protected $fillable = ['title', 'grade_id' , 'body'];
 
     public function grade()
     {

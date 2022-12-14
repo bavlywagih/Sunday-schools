@@ -26,6 +26,17 @@ class attendanceController extends Controller
             'users' => User::all()
         ]);
     }
+    public function Grade($id)
+    {
+        // dd($id);
+        return view('attendance.ShowPage.grade', ['grades' => grade::findorfail($id)]);
+    }
+
+    public function Session($id)
+    {
+        // dd($id);
+        return view('attendance.ShowPage.session', ['sessions' => session::findorfail($id)]);
+    }
 
     public function CreateGrade(Request $request)
     {
@@ -33,10 +44,11 @@ class attendanceController extends Controller
         return redirect('/attendance');
     }
 
-    public function CreateSession(Request $request)
+    public function CreateSession(Request $request  )
     {
+        // dd($request->body);
         if ($request->grade_id == '0') return redirect()->back();
-        Session::create(['title' => $request->title, 'grade_id' => $request->grade_id]);
+        Session::create(['title' => $request->title, 'grade_id' => $request->grade_id, 'body' => $request->body,]);
         return redirect('/attendance');
     }
     public function CollectAttendance(Request $request)

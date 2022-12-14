@@ -1,20 +1,20 @@
 
-    <div class="modal fade" id="createSession" tabindex="-1" aria-labelledby="createSessionLabel" aria-hidden="true">
+    <div class="modal fade" id="createuser" tabindex="-1" aria-labelledby="createuserLabel" aria-hidden="true">
         <form method="POST" action="{{route('create-session')}}">
             @csrf
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="createSessionLabel">انشاء درس</h1>
+                        <h1 class="modal-title fs-5" id="createuserLabel">انشاء درس</h1>
                         <div><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="session-title" class="form-label">اسم الدرس</label>
-                            <input type="text" name="title" class="form-control" id="session-title">
+                            <label for="user-title" class="form-label">اسم الدرس</label>
+                            <input type="text" name="title" class="form-control" id="user-title">
                         </div>
                         <div class="mb-3">
-                            <label for="session-title" class="form-label">الدرس</label>
+                            <label for="user-title" class="form-label">الدرس</label>
                             <div class="form-floating">
                                 <textarea class="form-control" name="body" placeholder="اكتب الدرس هنا"  style="height: 100px"></textarea>
                             </div>

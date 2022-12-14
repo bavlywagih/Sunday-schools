@@ -21,12 +21,14 @@
 
                         <ul class="list-group mt-3">
                             <label  class="form-label">الحضور</label>
-                            @foreach ($users->whereNotNull('grade_id') as $user)
+                            @forelse ($users->whereNotNull('grade_id') as $user)
                                 <li class="list-group-item">
                                     <input class="form-check-input me-1" name="users[]" type="checkbox" value="{{ $user->id }}" id="user-{{ $user->id }}">
                                     <label class="form-check-label" for="user-{{ $user->id }}">{{ $user->username }}</label>
                                 </li>
-                            @endforeach
+                            @empty
+                            لا يوجد حضور
+                            @endforelse
                         </ul>
                     </div>
                     <div class="modal-footer" style="justify-content: flex-start">

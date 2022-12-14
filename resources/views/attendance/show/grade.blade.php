@@ -6,16 +6,29 @@
             </tr>
         </thead>
         <tbody>
+            @if (Auth::user()->role != 0)
             @foreach ($grades as $grade)
-                <tr>
-                    <td>{{ $grade->title }}</td>
-                </tr>
-            @endforeach
+                    <tr>
+                        <th scope="row"><a href="{{route('grade' , $grade->id)}}">{{ $grade->title }}</a></th>
+                    </tr>
+                    @endforeach
+                @endif
+            <tr class="d-grid">
+                @if(  Auth()->user()->grade_id == '' )
+                    <th scope="row" class="border border-0">
+                        انت غير موجود في اي فصل
+                        @if (Auth::user()->role != 0 )
+                        يرجي التعديل من <a href="{{ route('edit.profile') }}">هنا</a>
+                        @endif
+                    </th>
+                @else
+                    <th>فصلك :</th>
+                    <th ><a href="{{route('grade' , Auth()->user()->grade_id)}}">{{Auth()->user()->grade->title}}</a></th>
+                @endif
+            </tr>
         </tbody>
     </table>
 </div>
 
 
-                                                                                        {{-- @foreach($grade->sessions as $session)
-                                                            {{ $session->title }} <br>
-                                                        @endforeach --}}
+

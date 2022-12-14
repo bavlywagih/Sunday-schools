@@ -4,7 +4,7 @@
 <div>
     <!-- No surplus words or unnecessary actions. - Marcus Aurelius -->
 
-    <form method="post" action="{{ $create }}" class="form-new" id="create-post-form">
+    <form method="post" action="{{ $create }}" class="form-new {{ route('attendance') === 'attendance' ? 'active' : '' }}" id="create-post-form">
         @csrf
         <div class="w-50 m-auto mt-0 mobile-width" >
             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">

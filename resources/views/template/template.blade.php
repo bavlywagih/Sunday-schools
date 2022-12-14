@@ -19,7 +19,7 @@
 
 
     </head>
-    <body>
+    <body >
         <x-navbar.navbar></x-navbar.navbar>
         @include('errors.errors-container')
 

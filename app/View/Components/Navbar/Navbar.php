@@ -29,7 +29,7 @@ class Navbar extends Component
 
 
         $this->currentRouteName = request()->route()->getName();
-        $this->adminRole = Auth()->user()?->role == '1';
+        $this->adminRole = Auth()->user()?->role != 0;
         $this->userRole = Auth()->user()?->role == '0';
         $this->loadPost = route('load.post');
         $this->litterAuth = Auth()->check() ? Auth()->user()->username[0] : null;

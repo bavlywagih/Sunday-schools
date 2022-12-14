@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('sessions', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->longText('body');
             $table->foreignId('grade_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });

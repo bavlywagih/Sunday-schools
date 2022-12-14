@@ -12,4 +12,6 @@ Route::post('/create-session', [ attendanceController::class, 'CreateSession'])-
 Route::post('/collect-attendance', [attendanceController::class, 'CollectAttendance'])->name('collect-attendance');
 
 
+Route::get( '/grade/{id}', [attendanceController::class, 'grade'])->name('grade');
+Route::get('/session/{id}', [attendanceController::class, 'Session'])->name('session');
 

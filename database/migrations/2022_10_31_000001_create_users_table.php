@@ -25,6 +25,7 @@ return new class extends Migration
             $table->date('birthday');
             $table->foreignId('grade_id')->nullable()->constrained('grades')->cascadeOnDelete()->cascadeOnUpdate();
 
+
         });
     }
 

@@ -42,14 +42,23 @@
         <li class="nav-item"><a class="nav-link nav-pro-mopile {{ $currentRouteName === 'load.post' ? 'active' : '' }}" href="{{ $loadPost }}"> المجتمع </a></li>
 @endauth
 
-		@if($adminRole)
 			<li class="nav-item">
 
-			    <a class="nav-link nav-pro-mopile {{ $currentRouteName === 'attendance' ? 'active' : '' }}" href="{{route('attendance')}}"> اخري </a>
+			    <a class="nav-link nav-pro-mopile {{ $currentRouteName === 'attendance' ? 'active' : '' }} " href="{{route('attendance')}}"> اخري </a>
 
 			</li>
 
-		@endif
+            @if ($adminRole)
+
+
+			<li class="nav-item">
+
+			    <a class="nav-link nav-pro-mopile {{ $currentRouteName === 'users' ? 'active' : '' }} " href="{{route('users')}}"> المستخدمين </a>
+
+			</li>
+
+            @endif
+
 
 	    @endauth
 
